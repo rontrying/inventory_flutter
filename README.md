@@ -29,7 +29,7 @@ Dapat mengubah propertinya selama masa hidupnya. Ini memungkinkan widget untuk m
 Cocok untuk bagian antarmuka pengguna yang perlu diperbarui secara dinamis sesuai dengan perubahan dalam aplikasi.
 Contoh sederhana: jika kita memiliki widget yang hanya menampilkan teks statis, kita mungkin akan menggunakan Stateless Widget. Tetapi jika kita memiliki widget yang perlu merespons input pengguna atau perubahan data, kita mungkin akan memilih Stateful Widget.
 
-2. Sebutkan seluruh widget y gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
+2. Sebutkan seluruh widget yang gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
 Widget yang digunakan untuk menyelesaikan tugas ini adalah sebagai berikut:
     Scaffold: Membentuk dasar tata letak aplikasi, memberikan kerangka kerja untuk menyusun elemen antarmuka.
     AppBar: Mengelola navigasi dan tindakan dalam aplikasi, sering ditempatkan di bagian atas layar.
@@ -43,14 +43,14 @@ Widget yang digunakan untuk menyelesaikan tugas ini adalah sebagai berikut:
 
 3. pertama - tama saya menginstal flutter beserta app - app yang dibutuhkan dalam pengembangan
 2. Buka Terminal atau Command Prompt.
-3. Masuk ke direktori di proyek flutter-mu.
-4. ```cmd
+4. Masuk ke direktori di proyek flutter-mu.
+5. ```cmd
 flutter create <APP_NAME>
 cd <APP_NAME>
 flutter run
 ```
 
-5. Merapikan Struktur Proyek
+6. Merapikan Struktur Proyek
 1. saya buat file baru bernama menu.dart pada direktori inventory_flutter/lib. Pada baris pertama file tersebut, tambahkan kode di bawah ini:
 ```dart
 import 'package:flutter/material.dart';
