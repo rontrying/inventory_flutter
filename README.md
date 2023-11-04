@@ -44,13 +44,14 @@ Widget yang digunakan untuk menyelesaikan tugas ini adalah sebagai berikut:
 3. pertama - tama saya menginstal flutter beserta app - app yang dibutuhkan dalam pengembangan
 2. Buka Terminal atau Command Prompt.
 4. Masuk ke direktori di proyek flutter-mu.
-5. ```cmd
-flutter create <APP_NAME>
-cd <APP_NAME>
+```cmd
+flutter create inventory_flutter
+cd inventory_flutter
 flutter run
 ```
 
 6. Merapikan Struktur Proyek
+
 1. saya buat file baru bernama menu.dart pada direktori inventory_flutter/lib. Pada baris pertama file tersebut, tambahkan kode di bawah ini:
 ```dart
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ import 'package:flutter/material.dart';
 2. pada file main.dart saya pindahkan kode baris ke-39 hingga akhir yang berisi kedua class di bawah ini:
 3. kemudian pada main.dart saya tambahkan kode :
 ```dart
-import 'package:shopping_list/menu.dart';
+import 'package:inventory_flutter/menu.dart';
 ```
 4. kemudian saya mengubah warna theme dengan mengubah nilai seedcolor
 ```dart
