@@ -41,7 +41,7 @@ Widget yang digunakan untuk menyelesaikan tugas ini adalah sebagai berikut:
     Icon: Menampilkan ikon dari kumpulan ikon yang telah disediakan oleh Flutter.
     Card: Mengelompokkan informasi terkait bersama dalam bentuk kartu, sering digunakan untuk presentasi data terstruktur.
 
-3. 1. pertama - tama saya menginstal flutter beserta app - app yang dibutuhkan dalam pengembangan
+3. pertama - tama saya menginstal flutter beserta app - app yang dibutuhkan dalam pengembangan
 2. Buka Terminal atau Command Prompt.
 3. Masuk ke direktori di proyek flutter-mu.
 4. ```cmd
