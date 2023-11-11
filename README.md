@@ -228,8 +228,10 @@ Tentu! Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengat
    )
    ```
 
-Itu adalah beberapa layout widget utama dalam Flutter beserta konteks penggunaannya. Pemilihan widget tergantung pada kebutuhan tata letak spesifik dalam aplikasi Fluttermu.
+Itu adalah beberapa layout widget utama dalam Flutter beserta konteks penggunaannya. Pemilihan widget tergantung pada kebutuhan tata letak spesifik dalam aplikasi Flutter.
+
 3. Sebutkan apa saja elemen input pada form yang saya pakai pada tugas kali ini dan jelaskan mengapa saya menggunakan elemen input tersebut!
+
 Pada tugas kali ini, saya menggunakan tiga elemen input pada formulir Flutter, yaitu:
 
 1. TextFormField untuk Nama Produk:
