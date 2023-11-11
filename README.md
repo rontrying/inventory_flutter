@@ -29,7 +29,7 @@ Dapat mengubah propertinya selama masa hidupnya. Ini memungkinkan widget untuk m
 Cocok untuk bagian antarmuka pengguna yang perlu diperbarui secara dinamis sesuai dengan perubahan dalam aplikasi.
 Contoh sederhana: jika kita memiliki widget yang hanya menampilkan teks statis, kita mungkin akan menggunakan Stateless Widget. Tetapi jika kita memiliki widget yang perlu merespons input pengguna atau perubahan data, kita mungkin akan memilih Stateful Widget.
 
-2. Sebutkan seluruh widget y gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
+2. Sebutkan seluruh widget yang gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
 Widget yang digunakan untuk menyelesaikan tugas ini adalah sebagai berikut:
     Scaffold: Membentuk dasar tata letak aplikasi, memberikan kerangka kerja untuk menyusun elemen antarmuka.
     AppBar: Mengelola navigasi dan tindakan dalam aplikasi, sering ditempatkan di bagian atas layar.
@@ -41,16 +41,17 @@ Widget yang digunakan untuk menyelesaikan tugas ini adalah sebagai berikut:
     Icon: Menampilkan ikon dari kumpulan ikon yang telah disediakan oleh Flutter.
     Card: Mengelompokkan informasi terkait bersama dalam bentuk kartu, sering digunakan untuk presentasi data terstruktur.
 
-3. 1. pertama - tama saya menginstal flutter beserta app - app yang dibutuhkan dalam pengembangan
+3. pertama - tama saya menginstal flutter beserta app - app yang dibutuhkan dalam pengembangan
 2. Buka Terminal atau Command Prompt.
-3. Masuk ke direktori di proyek flutter-mu.
-4. ```cmd
-flutter create <APP_NAME>
-cd <APP_NAME>
+4. Masuk ke direktori di proyek flutter-mu.
+```cmd
+flutter create inventory_flutter
+cd inventory_flutter
 flutter run
 ```
 
-5. Merapikan Struktur Proyek
+6. Merapikan Struktur Proyek
+
 1. saya buat file baru bernama menu.dart pada direktori inventory_flutter/lib. Pada baris pertama file tersebut, tambahkan kode di bawah ini:
 ```dart
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ import 'package:flutter/material.dart';
 2. pada file main.dart saya pindahkan kode baris ke-39 hingga akhir yang berisi kedua class di bawah ini:
 3. kemudian pada main.dart saya tambahkan kode :
 ```dart
-import 'package:shopping_list/menu.dart';
+import 'package:inventory_flutter/menu.dart';
 ```
 4. kemudian saya mengubah warna theme dengan mengubah nilai seedcolor
 ```dart
@@ -100,6 +101,7 @@ final List<ShopItem> items = [
 ```
 
 9. kemudian saya tambahkan kode di widget build dan membuat widget stateless baru untuk menampilkan card
+
 
 Tugas 8
 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
