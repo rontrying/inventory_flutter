@@ -287,7 +287,6 @@ Berikut adalah cara penerapan Clean Architecture pada aplikasi Flutter:
 Penerapan Clean Architecture pada aplikasi Flutter membantu mencapai tujuan utama: memisahkan kebijakan bisnis inti dari detail teknis dan eksternal, sehingga meningkatkan maintainability, testability, dan fleksibilitas aplikasi.
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
-- pertama tama saya membuat sebuah drawer yang saya atur bagian header dan routingnya yaitu pada drawer header dan routingnya pada ListTile
-- selanjutnya saya hias drawer saya dan saya masukan dalam menu.dart
-- kemudian saya buat shoplist_form
-- saya tambahkan variabel yang dibutuhkan dan tambahkan form
+- [ ] Item yang belum diselesaikan
+- [x] Item yang sudah diselesaikan
+
