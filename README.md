@@ -140,7 +140,7 @@ Pemilihan antara `Navigator.push()` dan `Navigator.pushReplacement()` tergantung
 2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
 Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata letak antar elemen dalam aplikasi. Berikut adalah beberapa layout widget utama beserta konteks penggunaannya:
 
-1. **`Container`**
+**`Container`**
    - **Konteks Penggunaan:** `Container` adalah widget serbaguna yang dapat digunakan untuk mengatur tata letak dan penataan. Ini bisa berisi elemen-elemen lain seperti teks, gambar, atau widget lainnya. `Container` sering digunakan sebagai wadah untuk widget lainnya.
 
    Contoh:
@@ -153,7 +153,7 @@ Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata
    )
    ```
 
-2. **`Column`**
+ **`Column`**
    - **Konteks Penggunaan:** `Column` mengatur widget secara vertikal dari atas ke bawah. Ini berguna saat ingin menata elemen secara vertikal, seperti daftar atau bagian-bagian vertikal di layar.
 
    Contoh:
@@ -167,7 +167,7 @@ Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata
    )
    ```
 
-3. **`Row`**
+ **`Row`**
    - **Konteks Penggunaan:** `Row` mengatur widget secara horizontal dari kiri ke kanan. Cocok digunakan untuk menyusun elemen secara horizontal.
 
    Contoh:
@@ -180,7 +180,7 @@ Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata
    )
    ```
 
-4. **`Stack`**
+ **`Stack`**
    - **Konteks Penggunaan:** `Stack` digunakan untuk menumpuk widget satu di atas yang lain. Ini berguna saat ingin menempatkan elemen-elemen di atas elemen lain.
 
    Contoh:
@@ -197,7 +197,7 @@ Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata
    )
    ```
 
-5. **`ListView`**
+ **`ListView`**
    - **Konteks Penggunaan:** `ListView` digunakan untuk membuat daftar gulir vertikal atau horizontal. Ini sangat berguna ketika perlu menampilkan banyak item dalam sebuah daftar.
 
    Contoh:
@@ -211,7 +211,7 @@ Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata
    )
    ```
 
-6. **`GridView`**
+ **`GridView`**
    - **Konteks Penggunaan:** `GridView` menyusun widget dalam bentuk grid. Ini cocok digunakan untuk menampilkan elemen dalam grid atau tata letak berbasis grid.
 
    Contoh:
