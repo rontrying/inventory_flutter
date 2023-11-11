@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:inventory_flutter/screens/shoplist_form.dart';
+import 'package:inventory_flutter/screens/itemlist_form.dart';
+import 'package:inventory_flutter/screens/itemlist.dart';
+
+class Item {
+  String name = "";
+  int amount = 0;
+  String description = "";
+  String rarity = "";
+
+  Item(this.name, this.amount, this.description, this.rarity);
+}
+
 class ShopItem {
   final String name;
   final IconData icon;
   final Color color;
-  ShopItem(this.name, this.icon,this.color);
+
+  ShopItem(this.name, this.icon, this.color);
 }
+
+List<Item>itemList = [];
 
 class ShopCard extends StatelessWidget {
   final ShopItem item;
@@ -24,10 +38,20 @@ class ShopCard extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
+
           // Navigate ke route yang sesuai (tergantung jenis tombol)
-           if (item.name == "Tambah Produk") {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ShopFormPage()));
+          if (item.name == "Tambah Item") {
+            Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const InventoryFormPage(),
+            ));
+          } else if (item.name == "Lihat Item") {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ItemListPage(),
+                ));
           }
         },
         child: Container(
