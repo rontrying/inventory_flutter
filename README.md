@@ -138,7 +138,7 @@ Tugas 8
 Pemilihan antara `Navigator.push()` dan `Navigator.pushReplacement()` tergantung pada kebutuhan aplikasi. Jika kita ingin pengguna bisa kembali ke rute sebelumnya, gunakan `Navigator.push()`. Namun, jika kita ingin menggantikan rute saat ini dengan yang baru (misalnya, setelah login), gunakan `Navigator.pushReplacement()`.
 
 2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
-Tentu! Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata letak antar elemen dalam aplikasi. Berikut adalah beberapa layout widget utama beserta konteks penggunaannya:
+Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata letak antar elemen dalam aplikasi. Berikut adalah beberapa layout widget utama beserta konteks penggunaannya:
 
 1. **`Container`**
    - **Konteks Penggunaan:** `Container` adalah widget serbaguna yang dapat digunakan untuk mengatur tata letak dan penataan. Ini bisa berisi elemen-elemen lain seperti teks, gambar, atau widget lainnya. `Container` sering digunakan sebagai wadah untuk widget lainnya.
