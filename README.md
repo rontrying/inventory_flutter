@@ -107,7 +107,7 @@ Tugas 8
 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
 `Navigator.push()` dan `Navigator.pushReplacement()` adalah dua metode navigasi yang berbeda dalam Flutter.
 
-1. **`Navigator.push()`**
+ **`Navigator.push()`**
    - Metode ini digunakan untuk menambahkan rute baru ke tumpukan navigasi.
    - Rute sebelumnya tetap ada di tumpukan dan bisa kembali ke rute sebelumnya.
 
@@ -121,7 +121,7 @@ Tugas 8
 
    Dalam contoh ini, `ProductListPage` ditambahkan ke tumpukan navigasi, dan pengguna dapat kembali ke rute sebelumnya.
 
-2. **`Navigator.pushReplacement()`**
+ **`Navigator.pushReplacement()`**
    - Metode ini digunakan untuk menambahkan rute baru ke tumpukan navigasi dan menggantikan rute saat ini dengan rute baru.
    - Rute sebelumnya dihapus dari tumpukan, sehingga pengguna tidak dapat kembali ke rute sebelumnya.
 
