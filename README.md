@@ -100,3 +100,192 @@ final List<ShopItem> items = [
 ```
 
 9. kemudian saya tambahkan kode di widget build dan membuat widget stateless baru untuk menampilkan card
+
+Tugas 8
+1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+`Navigator.push()` dan `Navigator.pushReplacement()` adalah dua metode navigasi yang berbeda dalam Flutter.
+
+1. **`Navigator.push()`**
+   - Metode ini digunakan untuk menambahkan rute baru ke tumpukan navigasi.
+   - Rute sebelumnya tetap ada di tumpukan dan bisa kembali ke rute sebelumnya.
+
+   Contoh penggunaan:
+   ```dart
+   Navigator.push(
+     context,
+     MaterialPageRoute(builder: (context) => ProductListPage()),
+   );
+   ```
+
+   Dalam contoh ini, `ProductListPage` ditambahkan ke tumpukan navigasi, dan pengguna dapat kembali ke rute sebelumnya.
+
+2. **`Navigator.pushReplacement()`**
+   - Metode ini digunakan untuk menambahkan rute baru ke tumpukan navigasi dan menggantikan rute saat ini dengan rute baru.
+   - Rute sebelumnya dihapus dari tumpukan, sehingga pengguna tidak dapat kembali ke rute sebelumnya.
+
+   Contoh penggunaan:
+   ```dart
+   Navigator.pushReplacement(
+     context,
+     MaterialPageRoute(builder: (context) => ProductListPage()),
+   );
+   ```
+
+   Dalam contoh ini, `ProductListPage` ditambahkan ke tumpukan navigasi dan menggantikan rute saat ini. Pengguna tidak dapat kembali ke rute sebelumnya.
+
+Pemilihan antara `Navigator.push()` dan `Navigator.pushReplacement()` tergantung pada kebutuhan aplikasi. Jika kita ingin pengguna bisa kembali ke rute sebelumnya, gunakan `Navigator.push()`. Namun, jika kita ingin menggantikan rute saat ini dengan yang baru (misalnya, setelah login), gunakan `Navigator.pushReplacement()`.
+
+2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+Tentu! Ada beberapa layout widget yang umum digunakan dalam Flutter untuk mengatur tata letak antar elemen dalam aplikasi. Berikut adalah beberapa layout widget utama beserta konteks penggunaannya:
+
+1. **`Container`**
+   - **Konteks Penggunaan:** `Container` adalah widget serbaguna yang dapat digunakan untuk mengatur tata letak dan penataan. Ini bisa berisi elemen-elemen lain seperti teks, gambar, atau widget lainnya. `Container` sering digunakan sebagai wadah untuk widget lainnya.
+
+   Contoh:
+   ```dart
+   Container(
+     width: 100.0,
+     height: 100.0,
+     color: Colors.blue,
+     child: Text('Hello'),
+   )
+   ```
+
+2. **`Column`**
+   - **Konteks Penggunaan:** `Column` mengatur widget secara vertikal dari atas ke bawah. Ini berguna saat ingin menata elemen secara vertikal, seperti daftar atau bagian-bagian vertikal di layar.
+
+   Contoh:
+   ```dart
+   Column(
+     children: [
+       Text('Item 1'),
+       Text('Item 2'),
+       // ...
+     ],
+   )
+   ```
+
+3. **`Row`**
+   - **Konteks Penggunaan:** `Row` mengatur widget secara horizontal dari kiri ke kanan. Cocok digunakan untuk menyusun elemen secara horizontal.
+
+   Contoh:
+   ```dart
+   Row(
+     children: [
+       Text('Left'),
+       Text('Right'),
+     ],
+   )
+   ```
+
+4. **`Stack`**
+   - **Konteks Penggunaan:** `Stack` digunakan untuk menumpuk widget satu di atas yang lain. Ini berguna saat ingin menempatkan elemen-elemen di atas elemen lain.
+
+   Contoh:
+   ```dart
+   Stack(
+     children: [
+       Image.network('url_to_image'),
+       Positioned(
+         bottom: 10.0,
+         right: 10.0,
+         child: Text('Overlay Text'),
+       ),
+     ],
+   )
+   ```
+
+5. **`ListView`**
+   - **Konteks Penggunaan:** `ListView` digunakan untuk membuat daftar gulir vertikal atau horizontal. Ini sangat berguna ketika perlu menampilkan banyak item dalam sebuah daftar.
+
+   Contoh:
+   ```dart
+   ListView(
+     children: [
+       ListTile(title: Text('Item 1')),
+       ListTile(title: Text('Item 2')),
+       // ...
+     ],
+   )
+   ```
+
+6. **`GridView`**
+   - **Konteks Penggunaan:** `GridView` menyusun widget dalam bentuk grid. Ini cocok digunakan untuk menampilkan elemen dalam grid atau tata letak berbasis grid.
+
+   Contoh:
+   ```dart
+   GridView.builder(
+     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+       crossAxisCount: 2,
+     ),
+     itemBuilder: (context, index) {
+       return Card(
+         child: Text('Item $index'),
+       );
+     },
+   )
+   ```
+
+Itu adalah beberapa layout widget utama dalam Flutter beserta konteks penggunaannya. Pemilihan widget tergantung pada kebutuhan tata letak spesifik dalam aplikasi Fluttermu.
+3. Sebutkan apa saja elemen input pada form yang saya pakai pada tugas kali ini dan jelaskan mengapa saya menggunakan elemen input tersebut!
+Pada tugas kali ini, saya menggunakan tiga elemen input pada formulir Flutter, yaitu:
+
+1. TextFormField untuk Nama Produk:
+Penggunaan: Digunakan untuk mengambil input nama produk.
+Penjelasan: Memberikan petunjuk visual (hint) dan label untuk memandu pengguna dalam mengisi nama produk. Menggunakan onChanged untuk mengupdate variabel _name dan validator untuk memastikan input tidak kosong.
+
+2. TextFormField untuk Harga:
+Penggunaan: Digunakan untuk mengambil input harga produk.
+Penjelasan: Memberikan petunjuk visual dan label untuk memandu pengguna dalam mengisi harga produk. Menggunakan onChanged untuk mengupdate variabel _price dan validator untuk memastikan input tidak kosong dan merupakan angka.
+
+3. TextFormField untuk Deskripsi:
+Penggunaan: Digunakan untuk mengambil input deskripsi produk.
+Penjelasan: Memberikan petunjuk visual dan label untuk memandu pengguna dalam mengisi deskripsi produk. Menggunakan onChanged untuk mengupdate variabel _description dan validator untuk memastikan input tidak kosong.
+
+4. Bagaimana penerapan clean architecture pada aplikasi Flutter?
+Clean Architecture adalah sebuah konsep desain perangkat lunak yang bertujuan untuk memisahkan dan mengorganisir kode menjadi lapisan-lapisan yang independen satu sama lain. Penerapan Clean Architecture pada aplikasi Flutter melibatkan penggunaan tiga lapisan utama: Presentasi (UI), Domain, dan Data.
+
+Berikut adalah cara penerapan Clean Architecture pada aplikasi Flutter:
+
+1. **Lapisan Presentasi (UI):**
+   - **Widget Flutter:** Berisi UI dan logika tampilan. Widget-widget ini memanggil metode atau fungsi dari lapisan Domain untuk memproses data.
+   - **Bloc/Provider:** Digunakan untuk mengelola keadaan (state) aplikasi dan logika bisnis. Bloc atau Provider dapat memanggil use case dari lapisan Domain.
+
+2. **Lapisan Domain:**
+   - **Use Cases (Interactors):** Berisi logika bisnis inti aplikasi. Use cases ini tidak bergantung pada Flutter dan bisa digunakan kembali di berbagai platform.
+   - **Repositories (Interface):** Interface untuk mengakses data. Repositories mendefinisikan kontrak antarmuka untuk mengambil dan menyimpan data, tetapi implementasinya ada di lapisan Data.
+
+3. **Lapisan Data:**
+   - **Repositories (Implementasi):** Implementasi dari repository-repository yang didefinisikan di lapisan Domain. Repositories di sini bertanggung jawab untuk berinteraksi dengan sumber data eksternal, seperti API atau database lokal.
+   - **Data Sources:** Bertanggung jawab langsung terhadap akses ke sumber data (API, database, dll.).
+
+4. **Dependency Injection:**
+   - Menggunakan Dependency Injection (DI) untuk menginjeksikan dependensi ke dalam kelas yang membutuhkannya. Flutter memiliki paket DI seperti `get_it` atau `provider` yang dapat digunakan untuk memfasilitasi injeksi dependensi.
+
+5. **Unit Testing:**
+   - Setiap lapisan dapat diuji secara terpisah. Use cases diuji di lapisan Domain, sementara UI dapat diuji menggunakan teknik seperti Widget testing atau Integration testing.
+
+6. **DTO (Data Transfer Objects):**
+   - Menggunakan DTO untuk mentransfer data antara lapisan Data dan lapisan Domain. Ini membantu menjaga keterpisahan antara kedua lapisan tersebut.
+
+7. **Model:**
+   - Model pada lapisan Domain harus bebas dari logika Flutter atau kode yang spesifik untuk platform tertentu.
+
+8. **Exception Handling:**
+   - Menangani exception pada setiap lapisan dengan baik. Contohnya, menyusun exception yang khusus untuk lapisan Domain dan mengonversinya ke exception yang lebih spesifik di lapisan Presentasi.
+
+9. **Penerapan Clean Code:**
+   - Memastikan bahwa setiap kelas dan fungsi mengikuti prinsip-prinsip Clean Code. Ini melibatkan penggunaan nama yang jelas, pembagian tugas yang baik, dan struktur kode yang bersih.
+
+10. **Pemisahan Kode Platform-Spesifik:**
+    - Mengisolasi kode yang bersifat platform-spesifik, misalnya kode yang berkaitan dengan API Flutter, ke dalam lapisan Presentasi atau Data yang sesuai.
+
+Penerapan Clean Architecture pada aplikasi Flutter membantu mencapai tujuan utama: memisahkan kebijakan bisnis inti dari detail teknis dan eksternal, sehingga meningkatkan maintainability, testability, dan fleksibilitas aplikasi.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+- pertama tama saya membuat sebuah drawer yang saya atur bagian header dan routingnya yaitu pada drawer header dan routingnya pada ListTile
+- selanjutnya saya hias drawer saya dan saya masukan dalam menu.dart
+- kemudian saya buat shoplist_form
+- saya tambahkan variabel yang dibutuhkan dan tambahkan form
+- 
+
