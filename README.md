@@ -287,6 +287,5 @@ Berikut adalah cara penerapan Clean Architecture pada aplikasi Flutter:
 Penerapan Clean Architecture pada aplikasi Flutter membantu mencapai tujuan utama: memisahkan kebijakan bisnis inti dari detail teknis dan eksternal, sehingga meningkatkan maintainability, testability, dan fleksibilitas aplikasi.
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
-- [ ] Item yang belum diselesaikan
-- [x] Item yang sudah diselesaikan
+    [ ] Item yang belum diselesaikan
 
