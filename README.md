@@ -287,5 +287,398 @@ Berikut adalah cara penerapan Clean Architecture pada aplikasi Flutter:
 Penerapan Clean Architecture pada aplikasi Flutter membantu mencapai tujuan utama: memisahkan kebijakan bisnis inti dari detail teknis dan eksternal, sehingga meningkatkan maintainability, testability, dan fleksibilitas aplikasi.
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
-    [ ] Item yang belum diselesaikan
+- [x] Membuat minimal satu halaman baru pada aplikasi, yaitu halaman formulir tambah item baru dengan ketentuan sebagai berikut: <br>
+        <br>
+         - Pada folder lib buatlah file dengan nama itemlist_form.dart <br>
+         
+    - [x] Memakai minimal tiga elemen input, yaitu name, amount, description. Tambahkan elemen input sesuai dengan model pada aplikasi tugas Django yang telah kamu buat. <br>
+          - Pada file tersebut tambahkan kode dibawah ini <br>
+        ```dart
+        import 'package:flutter/material.dart';
+        import 'package:inventory_flutter/widgets/left_drawer.dart';
+        
+        class InventoryFormPage extends StatefulWidget {
+            const InventoryFormPage({super.key});
+        
+            @override
+            State<InventoryFormPage> createState() => _InventoryFormPageState();
+        }
+        
+        class _InventoryFormPageState extends State<InventoryFormPage> {
+            final _formKey = GlobalKey<FormState>();
+            String _name = "";
+            int _amount = 0;
+            String _description = "";
+            String _rarity = "";
+        
+            @override
+            Widget build(BuildContext context) {
+                return Scaffold(
+                  appBar: AppBar(
+                    title: const Center(
+                      child: Text(
+                        'Form Tambah Item',
+                      ),
+                    ),
+                    backgroundColor: Colors.indigo,
+                    foregroundColor: Colors.white,
+                  ),
+                  drawer: const LeftDrawer(),
+                  body: Form(
+                    key: _formKey,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: "Nama Item",
+                                labelText: "Nama Item",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _name = value!;
+                                });
+                              },
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Nama tidak boleh kosong!";
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: "Jumlah",
+                                labelText: "Jumlah",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _amount = int.parse(value!);
+                                });
+                              },
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Jumlah tidak boleh kosong!";
+                                }
+                                if (int.tryParse(value) == null) {
+                                  return "Jumlah harus berupa angka!";
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: "Deskripsi",
+                                labelText: "Deskripsi",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _description = value!;
+                                });
+                              },
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Deskripsi tidak boleh kosong!";
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: "Deskripsi",
+                                labelText: "Deskripsi",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _rarity = value!;
+                                });
+                              },
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Rarity tidak boleh kosong!";
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ],
+                      )
+                    ),
+                  ),
+                );
+            }
+        }
+        ```
+    - [x] Memiliki sebuah tombol Save. <br>
+        - Lalu buatlah sebuah child dari Column. Bungkus tombol ke widget Padding dan Align. Berikut kodenya: <br>
+        ```dart
+          Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Colors.indigo),
+              ),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('Item berhasil tersimpan'),
+                        content: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment:
+                                CrossAxisAlignment.start,
+                            children: [
+                              Text('Nama: $_name'),
+                              Text('Jumlah: $_amount'),
+                              Text('Deskripsi: $_description'),
+                              Text('Rarity: $_rarity'),
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                _formKey.currentState!.reset();
+                }
+              },
+              child: const Text(
+                "Save",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+        ```
+    - [x] Setiap elemen input di formulir juga harus divalidasi dengan ketentuan sebagai berikut: <br>
+        - [x] Setiap elemen input tidak boleh kosong. <br>
+        - [x] Setiap elemen input harus berisi data dengan tipe data atribut modelnya.<br>
+            Setiap meminta input String pada form saya membuat validator seperti kode berikut: <br>
+            ```dart
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Nama tidak boleh kosong!";
+              }
+              return null;
+            },
+            ```
+            Setiap meminta input integer pada form saya membuat validator seperti kode berikut: <br>
+            ```dart
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Jumlah tidak boleh kosong!";
+              }
+              if (int.tryParse(value) == null) {
+                return "Jumlah harus berupa angka!";
+              }
+              return null;
+            },
+            ```
+    - [x] Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol Tambah Item pada halaman utama.<br>
+        - Pada card yang terdapat pada halaman utama saya menambahkan Navigator untuk push page InventoryFormPage ke stack. Berikut kodenya: <br>
+        ```dart
+          if (item.name == "Tambah Item") {
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const InventoryFormPage(),
+          ));
+        }
+        ```
+    - [x] Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman formulir tambah item baru.<br>
+        - Tambahkan fungsi showDialog() pada bagian onPressed() dan munculkan widget AlertDialog pada fungsi tersebut. Pada widget tambahkan child berupa widget Column yang berisi children dengan widget Text untuk menampilkan data-data yang sesuai. Kemudian, tambahkan juga fungsi untuk reset form. Berikut kodenya: <br>
+          ```dart
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Item berhasil tersimpan'),
+                      content: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                          children: [
+                            Text('Nama: $_name'),
+                            Text('Jumlah: $_amount'),
+                            Text('Deskripsi: $_description'),
+                            Text('Rarity: $_rarity'),
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              _formKey.currentState!.reset();
+              }
+            },
+          ```
+    - [x] Membuat sebuah drawer pada aplikasi dengan ketentuan sebagai berikut: <br>
+        - Pada folder lib buatlah folder widgets yang bernama left_drawer.dart. Lalu tambahkan kode berikut:<br>
+        ```dart
+        import 'package:flutter/material.dart';
+        import 'package:inventory_flutter/screens/itemlist_form.dart';
+        import 'package:inventory_flutter/screens/menu.dart';
+        
+        
+        class LeftDrawer extends StatelessWidget {
+          const LeftDrawer({super.key});
+        
+          @override
+          Widget build(BuildContext context) {
+            return Drawer(
+              child: ListView(
+                children: [
+                  const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.indigo,
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Inventory management ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Padding(padding: EdgeInsets.all(10)),
+                        Text("Catat seluruh keperluan di sini!",
+                                style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.white
+                              ),
+                            ),
+                      ],
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.home_outlined),
+                    title: const Text('Halaman Utama'),
+                    // Bagian redirection ke MyHomePage
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyHomePage(),
+                          ));
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.add_shopping_cart),
+                    title: const Text('Tambah Item'),
+                    // Bagian redirection ke ItemFormPage
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const InventoryFormPage(),
+                          ));
+                    },
+                  ),
+                ],
+              ),
+            );
+          }
+        }
+        ```
+        - [x] Drawer minimal memiliki dua buah opsi, yaitu Halaman Utama dan Tambah Item. <br>
+            - Saya menambahkan ListView berisi ListTile yang dimana disini akan digunakan untuk menampilkan secara berurut opsi untuk ke Halaman Utama dan Tambah Item. Berikut kodenya di dalam ListView:<br>
+              ```dart
+                ListTile(
+                  leading: const Icon(Icons.home_outlined),
+                  title: const Text('Halaman Utama'),
+                  // Bagian redirection ke MyHomePage
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyHomePage(),
+                        ));
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.add_shopping_cart),
+                  title: const Text('Tambah Item'),
+                  // Bagian redirection ke ItemFormPage
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const InventoryFormPage(),
+                        ));
+                  },
+                ),
+              ```
+        - [x]  Ketika memiih opsi Halaman Utama, maka aplikasi akan mengarahkan pengguna ke halaman utama. <br>
+            - Pada widget ListTile 'Halaman Utama' saya menambahkan Navigator.pushReplacement didalam fungsi onTap yang berarti saat ditekan akan menghapus route yang sedang ditampilkan kepada pengguna dan menggantinya dengan route ke Halaman Utama. Berikut kodenya: <br>
+            ```dart
+            onTap: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(),
+                ));
+            },
+            ```
+        - [x] Ketika memiih opsi (Tambah Item), maka aplikasi akan mengarahkan pengguna ke halaman form tambah item baru. <br>
+            - Pada widget ListTile 'Tambah Item' saya menambahkan Navigator.pushReplacement didalam fungsi onTap yang berarti saat ditekan akan menghapus route yang sedang ditampilkan kepada pengguna dan menggantinya dengan route ke form tambah item baru. Berikut kodenya: <br>
+            ```dart
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const InventoryFormPage(),
+                  ));
+            },
+            ```
+
 
