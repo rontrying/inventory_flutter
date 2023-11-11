@@ -291,5 +291,3 @@ Penerapan Clean Architecture pada aplikasi Flutter membantu mencapai tujuan utam
 - selanjutnya saya hias drawer saya dan saya masukan dalam menu.dart
 - kemudian saya buat shoplist_form
 - saya tambahkan variabel yang dibutuhkan dan tambahkan form
-- 
-
