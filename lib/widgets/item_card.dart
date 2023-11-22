@@ -49,7 +49,7 @@ class ShopCard extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => const InventoryFormPage(),
             ));
-          } else if (item.name == "Lihat Item") {
+          } else if (item.name == "Lihat Item berdasarkan user") {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(

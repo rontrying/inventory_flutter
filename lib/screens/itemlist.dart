@@ -1,60 +1,98 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:inventory_flutter/models/item.dart';
 import 'package:inventory_flutter/widgets/left_drawer.dart';
-import 'package:inventory_flutter/widgets/item_card.dart';
-
+import 'package:inventory_flutter/screens/one_item.dart';
 class ItemListPage extends StatefulWidget {
-  const ItemListPage({super.key});
-  @override
-  State<ItemListPage> createState() => _ItemListPageState();
+    const ItemListPage({Key? key}) : super(key: key);
+
+    @override
+    _ItemListPageState createState() => _ItemListPageState();
 }
 
 class _ItemListPageState extends State<ItemListPage> {
-  final _formKey = GlobalKey<FormState>();
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'List Item Anda',
-          ),
-        ),
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
-      ),
-      drawer: const LeftDrawer(),
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: itemList.length,
-                itemBuilder: (BuildContext context, int idx) {
-                  return ListTile(
-                      title: Text(
-                        "${idx + 1}. ${itemList[idx].name}",
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Container(
-                        margin: const EdgeInsets.only(left: 22.0),
-                        child: Text(
-                          "Jumlah: ${itemList[idx].amount}\nDeskripsi: ${itemList[idx].description}\nRarity: ${itemList[idx].rarity}\n",
-                          textAlign: TextAlign.left,
-                        ),
-                      ));
-                },
-              )
-            ],
-          ),
-        ),
-      ),
+Future<List<Item>> fetchProduct() async {
+    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+    var url = Uri.parse(
+        'http://127.0.0.1:8000/json/');
+    var response = await http.get(
+        url,
+        headers: {"Content-Type": "application/json"},
     );
-  }
+
+    // melakukan decode response menjadi bentuk json
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+    // melakukan konversi data json menjadi object Product
+    List<Item> list_product = [];
+    for (var d in data) {
+        if (d != null) {
+            list_product.add(Item.fromJson(d));
+        }
+    }
+    return list_product;
+}
+
+@override
+Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+        title: const Text('Item'),
+        ),
+        drawer: const LeftDrawer(),
+        body: FutureBuilder(
+            future: fetchProduct(),
+            builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.data == null) {
+                    return const Center(child: CircularProgressIndicator());
+                } else {
+                    if (!snapshot.hasData) {
+                    return const Column(
+                        children: [
+                        Text(
+                            "Tidak ada data item.",
+                            style:
+                                TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                        ),
+                        SizedBox(height: 8),
+                        ],
+                    );
+                } else {
+                    return ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (_, index) => Container(
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 12),
+                                padding: const EdgeInsets.all(20.0),
+                                child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                    Text(
+                                    "${snapshot.data![index].fields.name}",
+                                    style: const TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                    ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text("${snapshot.data![index].fields.amount}"),
+                                    const SizedBox(height: 10),
+                                    Text("${snapshot.data![index].fields.description}"),
+                                    ElevatedButton(onPressed: (){
+                                      Navigator.push(
+                                        context, 
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailsPage(item: snapshot.data![index],),
+                                        ));
+                                    }, 
+                                    child: Text("See Details"))
+                                ],
+                                ),
+                            ));
+                    }
+                }
+            }));
+    }
 }
