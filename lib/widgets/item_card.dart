@@ -59,7 +59,7 @@ class ShopCard extends StatelessWidget {
             // tambahkan else if baru seperti di bawah ini
             else if (item.name == "Logout") {
                     final response = await request.logout(
-                        "http://127.0.0.1:8000/auth/logout/");
+                        "https://aaron-kwek-tugas.pbp.cs.ui.ac.id/auth/logout/");
                     String message = response["message"];
                     if (response['status']) {
                       String uname = response["username"];

@@ -123,7 +123,7 @@ class _InventoryFormPageState extends State<InventoryFormPage> {
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                               final response = await request.postJson(
-                              "http://127.0.0.1:8000/create-flutter/",
+                              "https://aaron-kwek-tugas.pbp.cs.ui.ac.id/create-flutter/",
                               jsonEncode(<String, String>{
                                   'name': _name,
                                   'amount': _amount.toString(),

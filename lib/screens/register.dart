@@ -52,7 +52,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   String username = _usernameController.text;
                   String password = _passwordController.text;
 
-                  final response = await request.post("http://127.0.0.1:8000/auth/register/", {
+                  final response = await request.post("https://aaron-kwek-tugas.pbp.cs.ui.ac.id/auth/register/", {
                   'username': username,
                   'password': password,
                   });
